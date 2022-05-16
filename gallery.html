@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Prism SMP</title>
+        <!-- Bootstrap core CSS -->
+        <link href="assets/css/bootstrap.css" rel="stylesheet">
+		<!-- MyMC CSS -->
+        <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+		<!-- FontAwesome CSS -->
+        <link href="assets/css/mymc.css" rel="stylesheet">
+		<script>
+			// Open the Modal
+			function openModal() {
+			  document.getElementById("myModal").style.display = "block";
+			}
+
+			// Close the Modal
+			function closeModal() {
+			  document.getElementById("myModal").style.display = "none";
+			}
+
+			var slideIndex = 1;
+			showSlides(slideIndex);
+
+			// Next/previous controls
+			function plusSlides(n) {
+			  showSlides(slideIndex += n);
+			}
+
+			function showSlides(n) {
+			  var i;
+			  var slides = document.getElementsByClassName("mySlides");
+			  var dots = document.getElementsByClassName("demo");
+			  var captionText = document.getElementById("caption");
+			  if (n > slides.length) {slideIndex = 1}
+			  if (n < 1) {slideIndex = slides.length}
+			  for (i = 0; i < slides.length; i++) {
+				slides[i].style.display = "none";
+			  }
+			  for (i = 0; i < dots.length; i++) {
+				dots[i].className = dots[i].className.replace(" active", "");
+			  }
+			  slides[slideIndex-1].style.display = "block";
+			  dots[slideIndex-1].className += " active";
+			  captionText.innerHTML = dots[slideIndex-1].alt;
+			}
+		</script>
+		<style>
+			body {
+				 display: flex;
+				 justify-content: center;
+				 align-items: center;
+				 flex-direction: column;
+				 font-family: sans-serif;
+			}
+			 h1 {
+				 color: coral;
+			}
+			 .grid-container {
+				 columns: 5 200px;
+				 column-gap: 1.5rem;
+				 width: 90%;
+				 margin: 0 auto;
+			}
+			 .grid-container div {
+				 width: 150px;
+				 margin: 0 1.5rem 1.5rem 0;
+				 display: inline-block;
+				 width: 100%;
+				 border: solid 2px black;
+				 padding: 5px;
+				 box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+				 border-radius: 5px;
+				 transition: all 0.25s ease-in-out;
+			}
+			 .grid-container div:hover img {
+				 filter: grayscale(0);
+			}
+			 .grid-container div:hover {
+				 border-color: coral;
+			}
+			 .grid-container div img {
+				 width: 100%;
+				 filter: grayscale(100%);
+				 border-radius: 5px;
+				 transition: all 0.25s ease-in-out;
+			}
+			 .grid-container div p {
+				 color: black;
+				 margin: 5px 0;
+				 padding: 0;
+				 text-align: center;
+				 font-style: italic;
+			}			 
+		</style>
+    </head>
+    <body>
+        <nav class="navbar navbar-default navbar-static-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">Prism SMP</a>
+                </div>
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
+                        <li><a href="rules.html"><i class="fa fa-info-circle"></i> Rules</a></li>
+						<li><a href="staff.html"><i class="fa fa-gear"></i> Staff</a></li>
+                        <li class="active"><a href="gallery.html"><i class="fa fa-camera"></i> Gallery</a></li>
+						<li><a href="donate.html"><i class="fa fa-star"></i> Donate</a></li>
+
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+            <div class="container">
+				<h1>Coming soon!</h1>
+				</div>
+			<!-- /.container -->
+        <div class="container">
+            <hr>
+            <footer>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ul class="nav nav-pills bottom">
+						  <li class="pull-right">&copy; 2022 BoredManPlays</li>
+						</ul>
+					</div>
+                </div>
+            </footer>
+        </div>
+        <!-- /.container -->
+        <!-- JavaScript -->
+        <script src="assets/js/jquery-1.10.2.js"></script>
+        <script src="assets/js/bootstrap.js"></script>
+    </body>
+</html>

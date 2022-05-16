@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<link rel="manifest" href="/site.webmanifest">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Prism SMP</title>
+        <!-- Bootstrap core CSS -->
+        <link href="assets/css/bootstrap.css" rel="stylesheet">
+		<!-- MyMC CSS -->
+        <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+		<!-- FontAwesome CSS -->
+        <link href="assets/css/mymc.css" rel="stylesheet">
+
+
+		<style>
+			.gallery {
+				 display: flex;
+				 justify-content: center;
+				 align-items: center;
+				 flex-direction: column;
+				 font-family: sans-serif;
+			}
+			 h1 {
+				 color: coral;
+			}
+			 .grid-container {
+				 columns: 5 200px;
+				 column-gap: 1.5rem;
+				 width: 90%;
+				 margin: 0 auto;
+			}
+			 .grid-container div {
+				 width: 150px;
+				 margin: 0 1.5rem 1.5rem 0;
+				 display: inline-block;
+				 width: 100%;
+				 border: solid 2px black;
+				 padding: 5px;
+				 box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+				 border-radius: 5px;
+				 transition: all 0.25s ease-in-out;
+			}
+			 .grid-container div:hover img {
+				 filter: grayscale(0);
+			}
+			 .grid-container div:hover {
+				 border-color: coral;
+			}
+			 .grid-container div img {
+				 width: 100%;
+				 filter: grayscale(100%);
+				 border-radius: 5px;
+				 transition: all 0.25s ease-in-out;
+			}
+			 .grid-container div p {
+				 color: black;
+				 margin: 5px 0;
+				 padding: 0;
+				 text-align: center;
+				 font-style: italic;
+			}
+			/** LIGHTBOX MARKUP **/
+
+			.lightbox {
+			  /* Default to hidden */
+			  display: none;
+
+			  /* Overlay entire screen */
+			  position: fixed;
+			  z-index: 999;
+			  top: 0;
+			  left: 0;
+			  right: 0;
+			  bottom: 0;
+			  
+			  /* A bit of padding around image */
+			  padding: 1em;
+
+			  /* Translucent background */
+			  background: rgba(0, 0, 0, 0.8);
+			}
+
+			/* Unhide the lightbox when it's the target */
+			.lightbox:target {
+			  display: block;
+			}
+
+			.lightbox span {
+			  /* Full width and height */
+			  display: block;
+			  width: 100%;
+			  height: 100%;
+
+			  /* Size and position background image */
+			  background-position: center;
+			  background-repeat: no-repeat;
+			  background-size: contain;
+			}
+		</style>
+    </head>
+    <body>
+        <nav class="navbar navbar-default navbar-static-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">Prism SMP</a>
+                </div>
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
+                        <li><a href="rules.html"><i class="fa fa-info-circle"></i> Rules</a></li>
+						<li><a href="staff.html"><i class="fa fa-gear"></i> Staff</a></li>
+                        <li class="active"><a href="gallery.html"><i class="fa fa-camera"></i> Gallery</a></li>
+						<li><a href="donate.html"><i class="fa fa-star"></i> Donate</a></li>
+
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+		<div class="gallery">
+            <div class="container">
+				<h1>Some highlights from our server:</h1>
+				<div class="grid-container">
+				  <div>
+					<a href="#img1">
+						<img class='grid-item grid-item-1' src='https://cdn.discordapp.com/attachments/973448980996440105/974829081365475358/2022-05-13_20.15.31.png' alt='' onclick="openModal();currentSlide(1)">
+						<p>The Creeper Gates</p>
+					</a>
+				  </div>
+				  <div>
+					<a href="#img2">
+						<img class='grid-item grid-item-2' src='https://cdn.discordapp.com/attachments/973448980996440105/975467883977113600/2022-05-15_20.38.47.png' alt=''>
+						<p>The lost expedition</p>
+					</a>
+				  </div>
+				  <div>
+					<a href="#img3">
+						<img class='grid-item grid-item-3' src='https://cdn.discordapp.com/attachments/973448980996440105/975482495900463145/Base_Profile_Screenshot_2022.05.15_-_21.37.23.01.png' alt=''>
+						<p>Our spawn and shopping district</p>
+					</a>
+				  </div>
+				  <div>
+					  <a href="#img4">
+						<img class='grid-item grid-item-4' src='https://cdn.discordapp.com/attachments/973448980996440105/975482548987781240/Base_Profile_Screenshot_2022.05.15_-_21.36.32.96.png' alt=''>
+						<p>The Eressëan Emporium</p>
+					</a>
+				  </div>
+				  <div>
+					  <a href="#img5">
+						<img class='grid-item grid-item-5' src='https://cdn.discordapp.com/attachments/973448980996440105/975482639140143165/Base_Profile_Screenshot_2022.05.15_-_21.34.36.73.png' alt=''>
+						<p>The Eressëan Industrial District</p>
+					</a>
+				  </div>
+				  <div>
+					  <a href="#img6">
+						<img class='grid-item grid-item-6' src='https://cdn.discordapp.com/attachments/973448980996440105/975482886906073088/Base_Profile_Screenshot_2022.05.15_-_21.29.06.27.png' alt=''>
+						<p>The Nether Hub</p>
+					</a>
+				  </div>
+				  <div>
+					  <a href="#img7">
+						<img class='grid-item grid-item-7' src='https://cdn.discordapp.com/attachments/973448980996440105/975671539397693450/javaw_j63mzW8kDx.png' alt=''>
+						<p>The Mushmallow Man</p>
+					</a>
+				  </div>
+				  <!--
+				  <div>
+					<img class='grid-item grid-item-8' src='https://images.unsplash.com/photo-1518717758536-85ae29035b6d?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt=''>
+					<p>"You gunna finish that?"</p>
+				  </div>
+				  <div>
+					<img class='grid-item grid-item-9' src='https://images.unsplash.com/photo-1535930891776-0c2dfb7fda1a?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt=''>
+					<p>"We can't afford a cat!"</p>
+				  </div>
+				  <div>
+					<img class='grid-item grid-item-10' src='https://images.unsplash.com/photo-1504595403659-9088ce801e29?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt=''>
+					<p>"Dis my fren!"</p>
+				  </div>
+				</div>
+				-->
+				<!-- lightbox stuffs -->
+				<a href="#" class="lightbox" id="img1">
+				  <span style="background-image: url('https://cdn.discordapp.com/attachments/973448980996440105/974829081365475358/2022-05-13_20.15.31.png')"></span>
+				</a>
+				<a href="#" class="lightbox" id="img2">
+				  <span style="background-image: url('https://cdn.discordapp.com/attachments/973448980996440105/975467883977113600/2022-05-15_20.38.47.png')"></span>
+				</a>
+				<a href="#" class="lightbox" id="img3">
+				  <span style="background-image: url('https://cdn.discordapp.com/attachments/973448980996440105/975482495900463145/Base_Profile_Screenshot_2022.05.15_-_21.37.23.01.png')"></span>
+				</a>
+				<a href="#" class="lightbox" id="img4">
+				  <span style="background-image: url('https://cdn.discordapp.com/attachments/973448980996440105/975482548987781240/Base_Profile_Screenshot_2022.05.15_-_21.36.32.96.png')"></span>
+				</a>
+				<a href="#" class="lightbox" id="img5">
+				  <span style="background-image: url('https://cdn.discordapp.com/attachments/973448980996440105/975482639140143165/Base_Profile_Screenshot_2022.05.15_-_21.34.36.73.png')"></span>
+				</a>
+				<a href="#" class="lightbox" id="img6">
+				  <span style="background-image: url('https://cdn.discordapp.com/attachments/973448980996440105/975482886906073088/Base_Profile_Screenshot_2022.05.15_-_21.29.06.27.png')"></span>
+				</a>
+				<a href="#" class="lightbox" id="img7">
+				  <span style="background-image: url('https://cdn.discordapp.com/attachments/973448980996440105/975671539397693450/javaw_j63mzW8kDx.png')"></span>
+				</a>
+			</div>
+			<!-- /.container -->
+        <div class="container">
+            <hr>
+            <footer>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ul class="nav nav-pills bottom">
+						  <li class="pull-right">&copy; 2022 BoredManPlays</li>
+						</ul>
+					</div>
+                </div>
+            </footer>
+        </div>
+        <!-- /.container -->
+        <!-- JavaScript -->
+        <script src="assets/js/jquery-1.10.2.js"></script>
+        <script src="assets/js/bootstrap.js"></script>
+    </body>
+</html>
