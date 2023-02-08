@@ -16,6 +16,35 @@
         <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
 		<!-- FontAwesome CSS -->
         <link href="assets/css/mymc.css" rel="stylesheet">
+        <script>
+			const getJSON = async url => {
+			  const response = await fetch(url);
+			  if(!response.ok) // check if response worked (no 404 errors etc...)
+				throw new Error(response.statusText);
+
+			  const data = response.json(); // get JSON from the response
+			  return data; // returns a promise, which resolves to this data value
+			}
+
+			console.log("Fetching data...");
+			getJSON("https://abstract.land/api/proxy/transcripts.boredman.net/website.json").then(data => {
+				console.log("Data fetched: ", data);
+				document.getElementById("adjudicator-one-face").style = "background: url(https://minotar.net/helm/" + data.adjudicators.split(", ")[0] + "/150);";
+				document.getElementById("adjudicator-one-name").innerHTML = "<span>" + data.adjudicators.split(", ")[0] + "</span>";
+				document.getElementById("adjudicator-two-face").style = "background: url(https://minotar.net/helm/" + data.adjudicators.split(", ")[1] + "/150);";
+				document.getElementById("adjudicator-two-name").innerHTML = "<span>" + data.adjudicators.split(", ")[1] + "</span>";
+				document.getElementById("adjudicator-three-face").style = "background: url(https://minotar.net/helm/" + data.adjudicators.split(", ")[2] + "/150);";
+				document.getElementById("adjudicator-three-name").innerHTML = "<span>" + data.adjudicators.split(", ")[2] + "</span>";
+				document.getElementById("president-face").style = "background: url(https://minotar.net/helm/" + data.president + "/150);";
+				document.getElementById("president-name").innerHTML = "<span>" + data.president + "</span>";
+				document.getElementById("vice-president-face").style = "background: url(https://minotar.net/helm/" + data.vice_president + "/150);";
+				document.getElementById("vice-president-name").innerHTML = "<span>" + data.vice_president + "</span>";
+				document.getElementById("head-admin-face").style = "background: url(https://minotar.net/helm/" + data.head_admin + "/150);";
+				document.getElementById("head-admin-name").innerHTML = "<span>" + data.head_admin + "</span>";
+			}).catch(error => {
+			  console.error(error);
+			});
+		</script>
     </head>
     <body>
         <nav class="navbar navbar-default navbar-static-top" role="navigation">
@@ -45,100 +74,114 @@
         </nav>
             <div class="container">
 			<h1 class="page-header">Technical Management</h1>
-					<div style="background: url(https://minotar.net/avatar/HailOrange/150);" class="staff-member">
+					<div style="background: url(https://minotar.net/helm/Orange/150);" class="staff-member">
 						<div class="staff-name">
-							<span>HailOrange</span>
-						</div>						
+							<span>Orange</span>
+						</div>
 						<div class="staff-position">
 							<span>Owner</span>
 						</div>
 					</div>
-					<div style="background: url(https://minotar.net/avatar/Apocalypseofoto/150);" class="staff-member">
-						<div class="staff-name">
-							<span>Apocalypseofoto</span>
-						</div>						
+
+					<div id="adjudicator-one-face" style="background: url(https://cdn.discordapp.com/attachments/895784266976329739/992405101199228969/loading.gif);" class="staff-member">
+						<div id="adjudicator-one-name" class="staff-name">
+							<span>Loading...</span>
+						</div>
 						<div class="staff-position">
 							<span>Adjudicator</span>
 						</div>
 					</div>
-					<div style="background: url(https://minotar.net/avatar/Moonieglow/150);" class="staff-member">
-						<div class="staff-name">
-							<span>Moonieglow</span>
-						</div>						
+
+					<div id="adjudicator-two-face" style="background: url(https://cdn.discordapp.com/attachments/895784266976329739/992405101199228969/loading.gif);" class="staff-member">
+						<div id="adjudicator-two-name" class="staff-name">
+							<span>Loading...</span>
+						</div>
 						<div class="staff-position">
 							<span>Adjudicator</span>
 						</div>
 					</div>
-					<div style="background: url(https://minotar.net/avatar/BoredManPlays/150);" class="staff-member">
-						<div class="staff-name">
-							<span>BoredManPlays</span>
-						</div>						
+
+					<div id="adjudicator-three-face" style="background: url(https://cdn.discordapp.com/attachments/895784266976329739/992405101199228969/loading.gif);" class="staff-member">
+						<div id="adjudicator-three-name" class="staff-name">
+							<span>Loading...</span>
+						</div>
 						<div class="staff-position">
-							<span>Technical Specialist</span>
+							<span>Adjudicator</span>
 						</div>
 					</div>
-				<h1 class="page-header">Decision Makers</h1>
-					<div style="background: url(https://minotar.net/avatar/Chlain/150);" class="staff-member">
-						<div class="staff-name">
-							<span>Chlain</span>
-						</div>						
+
+<!--					<div style="background: url(https://minotar.net/helm/BoredManPlays/150);" class="staff-member">-->
+<!--						<div class="staff-name">-->
+<!--							<span>BoredManPlays</span>-->
+<!--						</div>-->
+<!--						<div class="staff-position">-->
+<!--							<span>Technical Specialist</span>-->
+<!--						</div>-->
+<!--					</div>-->
+
+				<h1 class="page-header">Decisional Team</h1>
+					<div id="president-face" style="background: url(https://cdn.discordapp.com/attachments/895784266976329739/992405101199228969/loading.gif);" class="staff-member">
+						<div id="president-name" class="staff-name">
+							<span>Loading...</span>
+						</div>
 						<div class="staff-position">
 							<span>President</span>
 						</div>
 					</div>
-					<div style="background: url(https://minotar.net/avatar/Tormented_Fork/150);" class="staff-member">
-						<div class="staff-name">
-							<span>Tormented_Fork</span>
-						</div>						
+					<div id="vice-president-face" style="background: url(https://cdn.discordapp.com/attachments/895784266976329739/992405101199228969/loading.gif);" class="staff-member">
+						<div id="vice-president-name" class="staff-name">
+							<span>Loading...</span>
+						</div>
 						<div class="staff-position">
 							<span>Vice-President</span>
 						</div>
 					</div>
 				<h1 class="page-header">Management</h1>
-					<div style="background: url(https://minotar.net/avatar/BoredManPlays/150);" class="staff-member">
-						<div class="staff-name">
-							<span>BoredManPlays</span>
-						</div>						
+					<div id="head-admin-face" style="background: url(https://cdn.discordapp.com/attachments/895784266976329739/992405101199228969/loading.gif);" class="staff-member">
+						<div id="head-admin-name" class="staff-name">
+							<span>Loading...</span>
+						</div>
 						<div class="staff-position">
 							<span>Head Administrator</span>
 						</div>
 					</div>
-					<div style="background: url(https://minotar.net/avatar/Chlain/150);" class="staff-member">
+					<!--<div style="background: url(https://minotar.net/helm/Chlain/150);" class="staff-member">
 						<div class="staff-name">
 							<span>Chlain</span>
-						</div>						
+						</div>
 						<div class="staff-position">
 							<span>Administrator</span>
 						</div>
-					</div>
-					<div style="background: url(https://minotar.net/avatar/Apocalypseofoto/150);" class="staff-member">
+					</div>-->
+					<div style="background: url(https://minotar.net/helm/FlopPop/150);" class="staff-member">
 						<div class="staff-name">
-							<span>Apocalypseofoto</span>
-						</div>						
+							<span>FlopPop</span>
+						</div>
 						<div class="staff-position">
 							<span>Administrator</span>
 						</div>
 					</div>
-					<div style="background: url(https://minotar.net/avatar/SpartaUltimate/150);" class="staff-member">
+
+					<div style="background: url(https://minotar.net/helm/SpartaUltimate/150);" class="staff-member">
 						<div class="staff-name">
 							<span>SpartaUltimate</span>
-						</div>						
+						</div>
 						<div class="staff-position">
 							<span>Moderator</span>
 						</div>
 					</div>
-					<div style="background: url(https://minotar.net/avatar/Tormented_Fork/150);" class="staff-member">
+					<div style="background: url(https://minotar.net/helm/GreemDev/150);" class="staff-member">
 						<div class="staff-name">
-							<span>Tormented_Fork</span>
-						</div>						
+							<span>GreemDev</span>
+						</div>
 						<div class="staff-position">
-							<span>Training Moderator</span>
+							<span>Moderator</span>
 						</div>
 					</div>
-					<div style="background: url(https://minotar.net/avatar/FlopPop/150);" class="staff-member">
+					<div style="background: url(https://minotar.net/helm/Buzz_Boi268/150);" class="staff-member">
 						<div class="staff-name">
-							<span>FlopPop</span>
-						</div>						
+							<span>Buzz_Boi268</span>
+						</div>
 						<div class="staff-position">
 							<span>Moderator</span>
 						</div>
