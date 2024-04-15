@@ -1,147 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-	<link rel="manifest" href="/site.webmanifest">
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="Come join us at Prism SMP" property="og:title" />
-        <meta content="We are the Prism SMP, a vanilla-survival server. The server is light on plugins, with only a few to help moderate and keep things running smoothly" property="og:description" />
-        <meta content="https://prism-smp.com" property="og:url" />
-        <meta content="https://api.loohpjames.com/serverbanner.png?ip=mc.prism-smp.com&name=Prism%20SMP" property="og:image" />
-        <meta content="#43B581" data-react-helmet="true" name="theme-color" />
-	    <meta name="twitter:card" content="summary_large_image">
-        <title>Prism SMP</title>
-        <!-- Bootstrap core CSS -->
-        <link href="assets/css/bootstrap.css" rel="stylesheet">
-		<!-- MyMC CSS -->
-        <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
-		<!-- FontAwesome CSS -->
-        <link href="assets/css/mymc.css" rel="stylesheet">
-		<script>
-			const getJSON = async url => {
-			  const response = await fetch(url);
-			  if(!response.ok) // check if response worked (no 404 errors etc...)
-				throw new Error(response.statusText);
+<head>
+    <link rel="apple-touch-icon" sizes="180x180" href="https://prism-smp.com/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://prism-smp.com/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://prism-smp.com/favicon-16x16.png">
+    <link rel="manifest" href="https://prism-smp.com/site.webmanifest">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Come join us at Prism SMP" property="og:title" />
+    <meta content="We are the Prism SMP, a vanilla-survival server. The server is light on plugins, with only a few to help moderate and keep things running smoothly" property="og:description" />
+    <meta content="https://prism-smp.com" property="og:url" />
+    <meta content="https://api.loohpjames.com/serverbanner.png?ip=mc.prism-smp.com&name=Prism%20SMP" property="og:image" />
+    <meta content="#43B581" data-react-helmet="true" name="theme-color" />
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Prism SMP</title>
+    <!-- Bootstrap core CSS -->
+    <link href="https://prism-smp.com/assets/css/bootstrap.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- MyMC CSS -->
+    <link href="https://prism-smp.com/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link href="https://prism-smp.com/assets/css/mymc.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            height: 'auto',
+            headerToolbar: {
+                left: '',
+                center: 'title',
+                right: ''
+            },
+            events: [
+                {
+                    title: 'Minigames!',
+                    start: '2024-03-17T15:00:00', // Adjust date and time accordingly
+                    daysOfWeek: [6],
+                    startTimezone: 'GMT',
+                    displayEventTime: false,
+                    description: 'Join us for some fun minigames every week\nJoin us for some bedwars, spleef, thimble among others!'
+                },
+                {
+                    title: 'End Reset',  // 4pm friday the 6th of april GMT
+                    start: '2024-04-06T16:00:00', // Adjust date and time accordingly
+                    startTimezone: 'GMT',
+                    displayEventTime: false,
+                    description: 'The End will be reset at 4pm GMT on Friday the 6th of April.\nJoin us as we tackle the end yet again!'
+                },
+            ],
+             eventClick: function(info) {
+                // if the title is "Minigames!", display a message with the minigames description,
+                // We will convert the time for the minigame to the user's local time
+                if (info.event.title === 'Minigames!') {
+                    var localTime = moment(info.event.start).format('MMMM Do YYYY, h:mm a');
+                    alert('Event: ' + info.event.title + '\nTime: ' + localTime + '\nDescription: ' + info.event.extendedProps.description);
+                } else {
+                    // If the title is not "Minigames!", display a generic message, also converting the time to the user's local time
+                    var localTime = moment(info.event.start).format('MMMM Do YYYY, h:mm a');
+                    alert('Event: ' + info.event.title + '\nTime: ' + localTime + '\nDescription: ' + info.event.extendedProps.description);
+                }
 
-			  const data = response.json(); // get JSON from the response
-			  return data; // returns a promise, which resolves to this data value
-			}
+              }
+        });
+        calendar.render();
+    });
+    </script>
 
-			console.log("Fetching data...");
-			getJSON("https://discord.com/api/guilds/861018927752151071/widget.json").then(data => {
-							document.getElementById("p1").innerHTML = "We currently have " + data.channels[2].name.toLowerCase() + "<br>And " + data.channels[1].name.toLowerCase();
-			}).catch(error => {
-			  console.error(error);
-			  document.getElementById("p1") .innerHTML = ""
-			});
-		</script>
-    </head>
-    <body>
-        <nav class="navbar navbar-default navbar-static-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    </button>
-                    <p><a class="navbar-brand" href="index.html">Prism SMP</a></p>
-                </div>
-                <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
-                        <li><a href="rules.html"><i class="fa fa-info-circle"></i> Rules</a></li>
-                        <li><a href="staff.html"><i class="fa fa-gear"></i> Staff</a></li>
-						<li><a href="https://prism-smp.tebex.io"><i class="fa fa-star"></i> Store</a></li>
 
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
+
+
+
+</head>
+<body>
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <p><a class="navbar-brand" href="index.html">Prism SMP</a></p>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+	        <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
+                <li><a href="rules.html"><i class="fa fa-info-circle"></i> Rules</a></li>
+                <li><a href="staff.html"><i class="fa fa-gear"></i> Staff</a></li>
+		<li><a href="plugins.html"><i class="fa fa-star"></i> Plugins</a></li>
+              </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<!-- Big opening-->
+<div class="jumbotron homepage-opening">
+    <div class="container">
+        <div class="row text-center">
+            <h1 class="head">Prism SMP</h1>
+            <br />
+            <center><a class="btn btn-huge btn-info btn-glow" href="https://discord.gg/fWRT5xmAbX">Start your adventure</a></center>
+        </div>
+    </div>
+</div>
+<!-- /Big opening -->
+<div class="container">
+    <style>
+        /* Style for the calendar */
+        #calendar {
+            background-color: white; /* White background */
+            border-radius: 5px; /* Rounded corners */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Drop shadow */
+            padding: 10px; /* Padding */
+            max-width: 800px; /* Maximum width */
+            margin: 0 auto; /* Center align */
+        }
+
+        /* Adjusted style for the "Upcoming Events" title */
+        #calendarh2 {
+            color: black;
+            text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+            margin-left: calc(50% - 400px); /* Adjust the value based on the width of the calendar */
+        }
+	/* Media query for mobile devices */
+        @media only screen and (max-width: 600px) {
+            #calendarh2 {
+                margin-left: 0; /* Reset left margin */
+                text-align: center; /* Center align the text */
+            }
+        }
+    </style>
+    <h2 id='calendarh2'>Upcoming events:</h2>  <!-- Title for Upcoming events -->
+    <div id='calendar'></div>
+    <div class="row text-center mc-items">
+        <h2>About us</h2>
+        <p>We are Prism SMP, a vanilla-survival server.</p>
+        <p>The server is light on plugins, with only a few included to help moderate and keep things running smoothly. The gameplay is only affected in small ways.</p>
+        <p>We have an associated discord server for you to talk to the other members, and potentially make some friends! You can chat to people in-game directly from the discord and vice-versa, to allow easy communication.</p>
+        <p>To fit with the theme, instead of a long list of rules, we have a constitution. Basically this is just like a terms and conditions, but you don't have to read it<br>(by joining you agree to it though).<br><br>We also feature a unique way of handling troublemakers. Moderators will arrest the person responsible and question them and gather evidence, if the person responsible isn't clear, then we will hold a trial to see who is guilty. Everyone will have a chance to defend themselves.</p>
+        <p>To join, click the button above, you will then be asked a series of questions and current members will review your application and either accept you into Prism or deny you to try again later. <br><br></p>
+        <div class="col-md-4">
+            <div class="icon">
+                <img src="https://www.9minecraft.net/wp-content/uploads/2021/09/cropped-Untitled-1.png" />
             </div>
-            <!-- /.container -->
-        </nav>
-        <!-- Big opening-->
-        <div class="jumbotron homepage-opening">
-            <div class="container">
-                <div class="row text-center">
-                    <h1 class="head">Prism SMP</h1>
-                    <h2 class="leader">Want to join us?</h2>
-                    <br />
-                    <center><a class="btn btn-huge btn-info btn-glow" href="https://discord.gg/wydCEXyUaX">Start your adventure</a></center>
-					<style>
-						h2 {
-							color: black;
-							text-shadow:
-							-1px -1px 0 #fff,
-							1px -1px 0 #fff,
-							-1px 1px 0 #fff,
-							1px 1px 0 #fff;  
-						}
-					</style>
-		    		<h2 id="p1">Loading...</h2>
+            <h2>Technical Minecraft</h2>
+            <p>We've disabled a lot of the normal server optimisations that break vanilla redstone contraptions, we want you to be able to make your wildest designs as long as they follow our <a href="rules.html">rules</a>.
+                <br /><br />
+            </p>
+        </div>
+        <div class="col-md-4">
+            <div class="icon">
+                <img src="assets/img/community.png" />
+            </div>
+            <h2>Communities</h2>
+            <p>Create or join communities to get your own channel and VC, share resources and participate in minigames as a group.
+                <br /><br />
+            </p>
+        </div>
+        <div class="col-md-4">
+            <div class="icon">
+                <img src="assets/img/comparator.gif" />
+            </div>
+            <h2>Events and Giveaways</h2>
+            <p>We host giveaways for a game on Steam, Discord Nitro and more, and we also host events such as UHCs, build competitions and more.
+                <br /><br />
+            </p>
+        </div>
+    </div>
+</div>
 
-                </div>
+<div class="container">
+    <hr>
+    <footer>
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="nav nav-pills bottom">
+                    <li class="pull-right">&copy; 2024 BoredManPlays</li>
+                </ul>
             </div>
         </div>
-        <!-- /Big opening -->
-            <div class="container">
-                <div class="row text-center mc-items">
-					<h2>About us</h2>
-					<p>We are Prism SMP, a vanilla-survival server.</p>
-					<p>The server is light on plugins, with only a few included to help moderate and keep things running smoothly. The gameplay is only affected in small ways.</p>
-					<p>We have an associated discord server for you to talk to the other members, and potentially make some friends! You can chat to people in-game directly from the discord and vice-versa, to allow easy communication.</p>
-					<p>To fit with the theme, instead of a long list of rules, we have a constitution. Basically this is just like a terms and conditions, but you don't have to read it<br>(by joining you agree to it though).<br><br>We also feature a unique way of handling troublemakers. Moderators will arrest the person responsible and question them and gather evidence, if the person responsible isn't clear, then we will hold a trial to see who is guilty. Everyone will have a chance to defend themselves.</p>
-
-					<p>To join, click the interview button above. This will take you to a small "interview server" where you will be asked a few questions. Once the mods have read your answers, you'll be accepted as a new member and after 2 weeks you'll be a full blown Prism member, a Prismian!<br><br></p>
-                    <div class="col-md-4">
-						<div class="icon">
-							<img src="https://www.9minecraft.net/wp-content/uploads/2021/09/cropped-Untitled-1.png" />
-						</div>
-                                                <h2>Technical Minecraft</h2>
-                        <p>We've disabled a lot of the normal server optimisations that break vanilla redstone contraptions, we want you to be able to make your wildest designs as long as they follow our <a href="rules.html">rules</a>.
-                            <br /><br />
-                        </p>
-                    </div>
-                    <div class="col-md-4">
-						<div class="icon">
-							<img src="assets/img/community.png" />
-						</div>
-                        <h2>Communities</h2>
-                        <p>Create or join communities to get your own channel and VC, share resources and participate in minigames as a group.
-                            <br /><br />
-                        </p>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="icon">
-                            <img src="assets/img/comparator.gif" />
-                        </div>
-                        <h2>Events and Giveaways</h2>
-                        <p>We host a giveaways for a game on steam, Discord Nitro and more, and we also host events such as UHCs, build competitions and more.
-                            <br /><br />
-                        </p>
-                    </div>
-                </div>
-            </div>
-        <div class="container">
-            <hr>
-            <footer>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <ul class="nav nav-pills bottom">
-						  <li class="pull-right">&copy; 2023 BoredManPlays</li>
-                          <li class="pull-left"><a href="terms.html">Terms and Conditions</a></li>
-						</ul>
-					</div>
-                </div>
-            </footer>
-        </div>
-        <!-- /.container -->
-        <!-- JavaScript -->
-        <script src="assets/js/jquery-1.10.2.js"></script>
-        <script src="assets/js/bootstrap.js"></script>
-    </body>
+    </footer>
+</div>
+<!-- /.container -->
+<!-- JavaScript -->
+<script src="assets/js/jquery-1.10.2.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+</body>
 </html>
